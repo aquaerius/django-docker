@@ -5,7 +5,7 @@
 sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove && sudo apt-get autoclean
 
 #Install git
-sudo apt-get install -y git
+sudo apt-get install -y apt-utils git
 
 #Install required libraries for docker
 sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
