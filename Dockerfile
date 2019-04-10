@@ -1,7 +1,8 @@
 # My Site
 # Version: 1.0
 
-FROM python:3
+# Pull base image
+FROM python:3.7-slim
 
 # Install Python and Package Libraries
 RUN apt-get update && apt-get upgrade -y && apt-get autoremove && apt-get autoclean
@@ -21,6 +22,11 @@ ARG PROJECT=myproject
 ARG PROJECT_DIR=/var/www/${PROJECT}
 RUN mkdir -p $PROJECT_DIR
 WORKDIR $PROJECT_DIR
+
+# Set environment varibles
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 COPY Pipfile Pipfile.lock ./
 RUN pip install -U pipenv
 RUN pipenv install --system
